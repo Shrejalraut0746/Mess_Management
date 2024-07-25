@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import userRoute from './Routes/userRoute.js';
 import authRouter from './Routes/authRoute.js';
+import dailyentryRouter from './Routes/dailyentryRoute.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
@@ -24,6 +25,7 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use("/users",userRoute);
 app.use("/auth",authRouter);
+app.use("/dailyentry",dailyentryRouter);
 
 // Connect to the database
 Connection();

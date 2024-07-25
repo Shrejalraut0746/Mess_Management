@@ -59,8 +59,10 @@ export const createNewUser = asyncHandler(async (req, res) => {
     const salt=await bcrypt.genSalt();
     const hashedPassword=await bcrypt.hash(password,salt);
 
+    const lastUser = await User.findOne().sort({ userId: -1 }).exec();
+    const newUserId = lastUser ? lastUser.userId + 1 : 1;
     //creating userObject
-    const userObject={name, email, mobileno, role, "password":hashedPassword, "cpassword":hashedPassword };
+    const userObject={userId: newUserId,name, email, mobileno, role, "password":hashedPassword, "cpassword":hashedPassword };
 
     // Create and store new user 
     const user=await new User(userObject).save();
@@ -74,39 +76,40 @@ export const createNewUser = asyncHandler(async (req, res) => {
 
 });
 
-export const updateUser=asyncHandler(async (req,res)=>{
-    const {name , email , mobileno,role } = req.body;
-    const uid=parseInt(req.params.id, 10);
+export const updateUser = asyncHandler(async (req, res) => {
+    const { name, email, mobileno, role } = req.body;
+    const uid = parseInt(req.params.id, 10);
 
     if (isNaN(uid)) {
         return res.status(400).json({ message: 'Invalid user ID' });
     }
-    console.log(uid);
-    // Does the user exist to update?
-    const user=await User.findOne({"userId":uid}).exec();
 
-    if(!user){
-        return res.status(400).json({message:'user not found'});
-
-    }
-     // Check for duplicate
-     const duplicateEmail = await User.findOne({ email }).lean().exec();
-     const duplicateMobileno = await User.findOne({ mobileno }).lean().exec();
- 
-     // Allow updates to the original user if the duplicate found is the same user
-     if ((duplicateEmail && duplicateEmail.userId !== user.userId) || (duplicateMobileno && duplicateMobileno.userId !== user.userId)) {
-         return res.status(409).json({ message: 'Duplicate email or mobile number' });
-     }
-
-    const updatedObject={name,email,mobileno,role};
-    const updatedUser=await User.updateOne({"userId":uid},updatedObject);
-    if (updatedUser.nModified === 1) {
-        return res.json({ message: `${email} updated` });
-    } else {
-        return res.status(400).json({ message: 'Failed to update user' });
+    const user = await User.findOne({ userId: uid }).exec();
+    if (!user) {
+        return res.status(400).json({ message: 'User not found' });
     }
 
-})
+    const duplicateEmail = await User.findOne({ email }).lean().exec();
+    const duplicateMobileno = await User.findOne({ mobileno }).lean().exec();
+
+    if ((duplicateEmail && duplicateEmail._id.toString() !== user._id.toString()) ||
+        (duplicateMobileno && duplicateMobileno._id.toString() !== user._id.toString())) {
+        return res.status(409).json({ message: 'Duplicate email or mobile number' });
+    }
+
+    user.name = name;
+    user.email = email;
+    user.mobileno = mobileno;
+    user.role = role;
+
+    try {
+        const updatedUser = await user.save();
+        res.json({ message: `${email} updated` });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to update user' });
+    }
+});
+
 
 export const resetPassword=asyncHandler(async (req,res)=>{
     // read data from req body
