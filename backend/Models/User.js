@@ -3,6 +3,7 @@ import { FaThemeisle } from 'react-icons/fa';
 import validator from 'validator';
 import DailyEntry from './DailyEntry.js';
 
+
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
