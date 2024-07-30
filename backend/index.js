@@ -15,7 +15,7 @@ dotenv.config();
 // Import the Connection function from db_connect.js
 import Connection from './database/db_connect.js';
 
-// Initialize the Express app
+// Initializes the Express app
 const app = express();
 const PORT= 4000
 

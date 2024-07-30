@@ -6,7 +6,7 @@ export const getPlan = expressAsyncHandler(async(req , res ) =>{
     const plan_type = req.params.plan_type
     //console.log(plan_type);
 
-    //confim data
+    //confirm data
     if(!plan_type){
         return res.status(400).json({message:'Plan type Require'})
     }
