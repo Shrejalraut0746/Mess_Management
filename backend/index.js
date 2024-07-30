@@ -5,6 +5,7 @@ import authRouter from './Routes/authRoute.js';
 import planRoute from './Routes/planRoute.js';
 import dailyentryRouter from './Routes/dailyentryRoute.js';
 import menuRoute from './Routes/menuRoutes.js'
+import userPlanRoute from './Routes/userPlanRoutes.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
@@ -30,9 +31,7 @@ app.use("/auth",authRouter);
 app.use("/dailyentry",dailyentryRouter);
 app.use("/menu", menuRoute)
 app.use("/plan",planRoute)
-
-
-
+app.use("/userplan",userPlanRoute);
 // Connect to the database
 Connection();
 
