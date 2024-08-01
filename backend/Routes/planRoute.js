@@ -4,7 +4,7 @@ import {Router} from "express";
 //import controler functions 
 import { addPlan , getPlan , getAllPlan , updatePlan , deletePlan } from '../Controller/planController.js';
 
-//create router application for req and res 
+//creating router application for req and res 
 const planRoute = Router();
 
 // router queries

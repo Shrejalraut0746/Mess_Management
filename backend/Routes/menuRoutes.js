@@ -2,7 +2,7 @@
 import { Router } from "express";
 import { getMenu , addMenu , updateMenu , deleteMenu} from "../Controller/menuController.js";
 
-// importing controller functions
+// importing controllers functions
 
 // create router application for taking and providing req and res
 const menuRoute = Router();
