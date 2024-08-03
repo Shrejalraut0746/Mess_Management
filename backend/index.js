@@ -7,6 +7,7 @@ import dailyentryRouter from './Routes/dailyentryRoute.js';
 import menuRoute from './Routes/menuRoutes.js'
 import userPlanRoute from './Routes/userPlanRoutes.js';
 import inventoryRoute from './Routes/inventoryRoutes.js';
+import statisticsRoute from './Routes/statisticsRoute.js';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
@@ -33,7 +34,8 @@ app.use("/dailyentry",dailyentryRouter);
 app.use("/menu", menuRoute)
 app.use("/plan",planRoute)
 app.use("/userplan",userPlanRoute);
-app.use("/inventory" , inventoryRoute)
+app.use("/inventory" , inventoryRoute);
+app.use("/stats",statisticsRoute);
 // Connect to the database
 Connection();
 
