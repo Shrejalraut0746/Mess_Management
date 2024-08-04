@@ -63,7 +63,7 @@ export const refresh =asyncHandler( async (req, res) => {
       process.env.AUTH_TOKEN,
       asyncHandler(async (err, decoded) => {
          if (err) {
-            return res.status(403), json({ message: 'Forbidden' });
+            return res.status(403).json({ message: 'Forbidden' });
          }
 
          const foundUser = await User.findOne({ email: decoded.email }).exec();

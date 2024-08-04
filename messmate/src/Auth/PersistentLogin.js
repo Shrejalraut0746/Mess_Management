@@ -22,8 +22,12 @@ const PersistentLogin = () => {
             }
         }
 
-        auth.accessToke?isRefreshing(false) : verifyCookie()
-    } , []);
+        if (!auth?.accessToken) {
+            verifyCookie();
+        } else {
+            isRefreshing(false);
+        }
+    } , [auth,refresh]);
 
     return (
         refreshing ? <p>Loading ....</p> : <Outlet />
