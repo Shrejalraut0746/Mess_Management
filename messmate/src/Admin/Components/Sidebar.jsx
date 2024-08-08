@@ -141,7 +141,7 @@ function Sidebar() {
 
         <li className="w-full  mt-8 hidden sm:block">
           <h6 className="ml-2  text-center text-lg  text-black font-bold leading-tight uppercase  opacity-100">
-            Account pages
+            Account
           </h6>
         </li>
 <hr className="bg-black mt-3 hidden sm:block" />
