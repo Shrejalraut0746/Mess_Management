@@ -40,9 +40,75 @@ app.use("/stats",statisticsRoute);
 Connection();
 
 // Define the route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.get("/" , async (req,res) => {
+
+  const today_date = moment().utcOffset("+05:30").startOf('month').toDate()
+  const end_date1 = moment().utcOffset("+05:30").endOf('month').toDate()
+  const users = await Inventory.aggregate([
+      {
+          $match:
+          {
+            "date" : {$gte : today_date ,$lte : end_date1}
+          }
+      },
+
+      {
+        $group : 
+        {
+          _id: "$storeType",
+          Expense : { $sum : '$sub_total'}
+        }
+      },
+
+      ]
+      )
+
+    res.send(users)
+})
+
+app.get("/date" , async (req,res) => {
+
+  const today_date = moment().utcOffset("+05:30").startOf('week').toDate()
+  const end_date1 = moment().utcOffset("+05:30").endOf('week').toDate()
+  console.log(today_date);
+  console.log(end_date1);
+
+  const user = await UserPlan.aggregate(
+      [{
+          $match : {
+              "start_date":{$gte:today_date , $lte:end_date1},
+              // "end_date":{$gte:today_date},
+          }
+      },
+      {
+          $group: {
+              _id: "$start_date",
+              totalamount: { $sum: "$fees" }
+           }
+      }
+  ]
+      )
+      function groupBy(objectArray, property) {
+          return objectArray.reduce(function (acc, obj) {
+            var key = obj[property];
+            key = moment(key).startOf('date').get('date')
+          //   console.log(obj);
+            if (!acc[key]) {
+              acc[key] = [];
+            }
+            acc[key].push(obj);
+            return acc;
+          }, {});
+        }
+        
+      var groupedPeople = groupBy(user, '_id');
+      groupedPeople  = Object.entries(groupedPeople).map(entry => {
+          return {"date": entry[0],"amount": entry[1][0].totalamount};
+          // console.log(entry[1][0]);
+        });
+      res.json(groupedPeople)
+})
+
 
 // Start the server
 app.listen(PORT, () => {

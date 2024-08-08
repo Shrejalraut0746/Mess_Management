@@ -10,6 +10,10 @@ import Aboutus from "./Components/Aboutus";
 import Unauthorized from "./Components/Unauthorized";
 import Sidebar from './Admin/Components/Sidebar.jsx';
 import Admin from './Admin/Admin.jsx';
+import Adduser from './Admin/Pages/Adduser.jsx';
+import Dashboad from './Admin/Pages/Dashboad.jsx';
+import Card from "../src/Admin/Pages/Card.jsx"
+import QrAttendance from './Admin/Pages/QrAttendance.jsx';
 
 function App() {
   return (
@@ -17,7 +21,7 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-
+        
           <Route element={<PersistentLogin />}>
             <Route path="/" element={<Main />}>
               <Route path="" element={<Home />}></Route>
@@ -26,8 +30,12 @@ function App() {
               <Route path="/about" element={<Aboutus />}></Route>
             </Route>
             <Route element={<RequireAuth accessRole={1}/>}>
-               <Route path="/admin" element={<Admin/>}></Route>
-
+               <Route path="/admin" element={<Admin/>}>
+               <Route path='' element={<Dashboad/>}></Route>
+                <Route path='qrattendance' element={<QrAttendance/>}></Route>
+                 <Route path="adduser" element={<Adduser/>}></Route>
+               </Route>
+               
             </Route>
           </Route>
 
