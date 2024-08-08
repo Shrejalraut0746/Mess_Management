@@ -10,14 +10,12 @@ import Aboutus from "./Components/Aboutus";
 import Unauthorized from "./Components/Unauthorized";
 import Sidebar from './Admin/Components/Sidebar.jsx';
 import Admin from './Admin/Admin.jsx';
-
 function App() {
   return (
     <div className="App">
-
       <BrowserRouter>
         <Routes>
-
+        
           <Route element={<PersistentLogin />}>
             <Route path="/" element={<Main />}>
               <Route path="" element={<Home />}></Route>
