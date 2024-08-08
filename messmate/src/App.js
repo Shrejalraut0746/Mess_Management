@@ -10,15 +10,14 @@ import Aboutus from "./Components/Aboutus";
 import Unauthorized from "./Components/Unauthorized";
 import Sidebar from './Admin/Components/Sidebar.jsx';
 import Admin from './Admin/Admin.jsx';
+
 import Adduser from './Admin/Pages/Adduser.jsx';
 import Dashboad from './Admin/Pages/Dashboad.jsx';
 import Card from "../src/Admin/Pages/Card.jsx"
 import QrAttendance from './Admin/Pages/QrAttendance.jsx';
-
 function App() {
   return (
     <div className="App">
-
       <BrowserRouter>
         <Routes>
         
