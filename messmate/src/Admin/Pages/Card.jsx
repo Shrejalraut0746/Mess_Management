@@ -1,29 +1,33 @@
-import React from 'react'
+import React from "react";
 
 const Card = ({ scanResultWebCam, takeAttendance, info }) => {
   return (
     <div className=" lg:pr-10 lg:py-6 mb-6 lg:mb-0  w-[28rem] p-[1rem] border border-[1px] border-black border">
-       <div className="flex mb-4">
+      <div className="flex mb-4">
         <span className="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
           {scanResultWebCam.name}:{info} Status Ok
         </span>
-       </div>
-       <p>{scanResultWebCam.userId}</p>
-       <div className="flex border-t border-gray-200 py-2">
-          <span className="text-gray-500 flex-[1]">Email</span>
-          <span className="flex-[1] text-gray-900">{scanResultWebCam.email}</span>
-       </div>
-       <div className="flex border-t border-gray-200 py-2">
-        <span className="text-gray-500 flex-[1]">Current Plan Id </span>
-        <span className="flex-[1] text-gray-900">{scanResultWebCam.planId}</span>
-      </div >
+      </div>
+      <p>{scanResultWebCam.userId}</p>
+      <div className="flex border-t border-gray-200 py-2">
+        <span className="text-gray-500 flex-[1]">Email </span>
+        <span className="flex-[1] text-gray-900">{scanResultWebCam.email}</span>
+      </div>
+      <div className="flex border-t border-gray-200 py-2">
+        <span className="text-gray-500 flex-[1]">Current Plan Id</span>
+        <span className=" text-gray-900 flex-[1]">
+          {scanResultWebCam.planId}
+        </span>
+      </div>
       <div className="flex border-t border-b mb-6 border-gray-200 py-2">
         <span className="text-gray-500 flex-[1]">Fee Status</span>
-        <span className="flex-[1] text-gray-900">{scanResultWebCam.fee_status?(
-             <div className="w-[2rem] h-[2rem] rounded-full bg-green-400"></div>
-        ):(
+        <span className=" text-gray-900 flex-[1]">
+          {scanResultWebCam.fee_status ? (
+            <div className="w-[2rem] h-[2rem] rounded-full bg-green-400"></div>
+          ) : (
             <div className="w-[2rem] h-[2rem] rounded-full bg-red-400"></div>
-        )}</span>
+          )}
+        </span>
       </div>
       <div className="flex">
         <span className="title-font font-medium text-2xl text-gray-900">
@@ -51,7 +55,7 @@ const Card = ({ scanResultWebCam, takeAttendance, info }) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
