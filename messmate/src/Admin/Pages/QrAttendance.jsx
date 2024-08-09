@@ -3,8 +3,6 @@ import QrReader from "react-qr-reader"
 import axios from '../../Api/axios'
 import Alert from '../../Components/Alert'
 import Card from './Card'
-import { useAsyncError } from 'react-router-dom'
-import { BsBorderWidth } from 'react-icons/bs'
 
 const QrAttendance = () => {
   const [data,setData]=useState([]);
