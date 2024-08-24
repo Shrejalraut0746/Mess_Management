@@ -8,19 +8,22 @@ import MenuHome from "./Components/Menu";
 import Contact from "./Components/Contact";
 import Aboutus from "./Components/Aboutus";
 import Unauthorized from "./Components/Unauthorized";
-import Sidebar from './Admin/Components/Sidebar.jsx';
+
 import Admin from './Admin/Admin.jsx';
 
 import Adduser from './Admin/Pages/Adduser.jsx';
 import Dashboad from './Admin/Pages/Dashboad.jsx';
-import Card from "../src/Admin/Pages/Card.jsx"
 import QrAttendance from './Admin/Pages/QrAttendance.jsx';
+import EditModal from './Admin/Pages/EditModal.jsx';
+import Alluser from "./Admin/Pages/Alluser.jsx"
+import Piecard from "./Admin/Pages/Piecard.jsx"
+import Dailyentry from './Admin/Pages/Dailyentry.jsx';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-        
+          
           <Route element={<PersistentLogin />}>
             <Route path="/" element={<Main />}>
               <Route path="" element={<Home />}></Route>
@@ -28,13 +31,15 @@ function App() {
               <Route path="/contact" element={<Contact />}></Route>
               <Route path="/about" element={<Aboutus />}></Route>
             </Route>
-            <Route element={<RequireAuth accessRole={1}/>}>
-               <Route path="/admin" element={<Admin/>}>
-               <Route path='' element={<Dashboad/>}></Route>
-                <Route path='qrattendance' element={<QrAttendance/>}></Route>
-                 <Route path="adduser" element={<Adduser/>}></Route>
-               </Route>
-               
+            <Route element={<RequireAuth accessRole={1} />}>
+              <Route path="/admin" element={<Admin />}>
+                <Route path='' element={<Dashboad />}></Route>
+                <Route path='attendance' element={<Dailyentry/>}></Route>
+                <Route path='qrattendance' element={<QrAttendance />}></Route>
+                <Route path="adduser" element={<Adduser />}></Route>
+                <Route path="alluser" element={<Alluser/>}></Route>
+              </Route>
+
             </Route>
           </Route>
 
