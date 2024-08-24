@@ -14,10 +14,13 @@ import Admin from './Admin/Admin.jsx';
 import Adduser from './Admin/Pages/Adduser.jsx';
 import Dashboad from './Admin/Pages/Dashboad.jsx';
 import QrAttendance from './Admin/Pages/QrAttendance.jsx';
+import Inventory from "./Admin/Pages/Inventory";
+import Menu from "./Admin/Pages/Menu";
 import EditModal from './Admin/Pages/EditModal.jsx';
 import Alluser from "./Admin/Pages/Alluser.jsx"
 import Piecard from "./Admin/Pages/Piecard.jsx"
 import Dailyentry from './Admin/Pages/Dailyentry.jsx';
+
 function App() {
   return (
     <div className="App">
@@ -31,12 +34,16 @@ function App() {
               <Route path="/contact" element={<Contact />}></Route>
               <Route path="/about" element={<Aboutus />}></Route>
             </Route>
+
+           
             <Route element={<RequireAuth accessRole={1} />}>
               <Route path="/admin" element={<Admin />}>
                 <Route path='' element={<Dashboad />}></Route>
                 <Route path='attendance' element={<Dailyentry/>}></Route>
                 <Route path='qrattendance' element={<QrAttendance />}></Route>
                 <Route path="adduser" element={<Adduser />}></Route>
+                 <Route path="inventory" element={<Inventory />}></Route>
+                 <Route path="menu" element={<Menu />}> </Route>
                 <Route path="alluser" element={<Alluser/>}></Route>
               </Route>
 

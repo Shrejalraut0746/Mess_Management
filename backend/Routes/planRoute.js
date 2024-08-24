@@ -11,7 +11,7 @@ const planRoute = Router();
 planRoute.post("/addPlan" , addPlan)
 planRoute.get("/getPlan/:plan_type" ,  getPlan)
 planRoute.get("/getAllPlan" ,  getAllPlan)
-planRoute.put("/updatePlan" , updatePlan)
+planRoute.patch("/updatePlan" , updatePlan)
 planRoute.delete("/deletePlan" , deletePlan)
 
 
