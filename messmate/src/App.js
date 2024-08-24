@@ -15,6 +15,9 @@ import Adduser from './Admin/Pages/Adduser.jsx';
 import Dashboad from './Admin/Pages/Dashboad.jsx';
 import Card from "../src/Admin/Pages/Card.jsx"
 import QrAttendance from './Admin/Pages/QrAttendance.jsx';
+import Inventory from "./Admin/Pages/Inventory";
+import Menu from "./Admin/Pages/Menu";
+
 function App() {
   return (
     <div className="App">
@@ -30,9 +33,11 @@ function App() {
             </Route>
             <Route element={<RequireAuth accessRole={1}/>}>
                <Route path="/admin" element={<Admin/>}>
-               <Route path='' element={<Dashboad/>}></Route>
-                <Route path='qrattendance' element={<QrAttendance/>}></Route>
+                 <Route path='' element={<Dashboad/>}></Route>
+                 <Route path='qrattendance' element={<QrAttendance/>}></Route>
                  <Route path="adduser" element={<Adduser/>}></Route>
+                 <Route path="inventory" element={<Inventory />}></Route>
+                 <Route path="menu" element={<Menu />}> </Route>
                </Route>
                
             </Route>
