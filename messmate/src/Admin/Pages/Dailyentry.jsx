@@ -36,6 +36,7 @@ const Dailyentry = () => {
       <hr />
 
       {isSetAll ? <AllPlanTable /> : <TodayStudent />}
+
     </div>
   );
 };
