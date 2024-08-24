@@ -35,7 +35,8 @@ const Dailyentry = () => {
       </div>
       <hr />
 
-       {isSetAll ? <AllPlanTable /> : <TodayStudent />} 
+      {isSetAll ? <AllPlanTable /> : <TodayStudent />}
+
     </div>
   );
 };
