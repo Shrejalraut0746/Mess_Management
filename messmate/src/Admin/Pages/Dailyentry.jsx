@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../../Api/axios";
 import EditModal from "./EditModal";
 import dayjs from "dayjs";
-//import AllPlanTable from "./AllPlanTable";
+import AllPlanTable from "./AllPlanTable";
 import TodayStudent from "./TodayStudent";
 
 const Dailyentry = () => {
@@ -35,7 +35,7 @@ const Dailyentry = () => {
       </div>
       <hr />
 
-      {/* {isSetAll ? <AllPlanTable /> : <TodayStudent />} */}
+       {isSetAll ? <AllPlanTable /> : <TodayStudent />} 
     </div>
   );
 };
