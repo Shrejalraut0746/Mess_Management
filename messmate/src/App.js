@@ -20,6 +20,7 @@ import EditModal from './Admin/Pages/EditModal.jsx';
 import Alluser from "./Admin/Pages/Alluser.jsx"
 import Piecard from "./Admin/Pages/Piecard.jsx"
 import Dailyentry from './Admin/Pages/Dailyentry.jsx';
+import User from './User/User.jsx';
 
 function App() {
   return (
@@ -46,10 +47,11 @@ function App() {
                  <Route path="menu" element={<Menu />}> </Route>
                 <Route path="alluser" element={<Alluser/>}></Route>
               </Route>
-
             </Route>
           </Route>
-
+          <Route element={<RequireAuth accessRole={0} />}>
+               <Route path="/user" element={<User/>}></Route>
+          </Route>
           <Route path="/unauthorized" element={<Unauthorized />}> </Route>
         </Routes>
       </BrowserRouter>
