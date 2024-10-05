@@ -18,19 +18,18 @@ import Inventory from "./Admin/Pages/Inventory";
 import Menu from "./Admin/Pages/Menu";
 
 import Alluser from "./Admin/Pages/Alluser.jsx"
-
 import Dailyentry from './Admin/Pages/Dailyentry.jsx';
 import User from './User/User.jsx';
+import ProfileScanner from './User/Pages/ProfileScanner.jsx';
+import UserMenu from './User/Pages/UserMenu.jsx';
 import Subscription from "./User/Pages/Subscription.jsx";
 import Info from "./User/Pages/Info.jsx";
-
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          
           <Route element={<PersistentLogin />}>
             <Route path="/" element={<Main />}>
               <Route path="" element={<Home />}></Route>
@@ -54,8 +53,10 @@ function App() {
           </Route>
           <Route element={<RequireAuth accessRole={0} />}>
                <Route path="/user" element={<User/>}>
+                  <Route path="" element={<ProfileScanner/>}></Route>
                   <Route path="editprofile" element={<EditProfile />}></Route>
                   <Route path="subscription" element={<Subscription />}></Route>
+                  <Route path="usermenu" element={<UserMenu/>}></Route>
                   <Route path="information" element={<Info />}></Route>
                </Route>
           </Route>
