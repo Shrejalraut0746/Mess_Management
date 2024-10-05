@@ -32,7 +32,7 @@ PlanSchema.pre("save",async function (next){
     //console.log(docs);
     const data  = await Plan.find()
     //console.log(data.length);
-    if(docs.plane_type === 'Daily')
+    if(docs.plan_type === 'Daily')
     {
         docs.planId = 501;
     }

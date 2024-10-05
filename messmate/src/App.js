@@ -16,18 +16,17 @@ import Dashboad from './Admin/Pages/Dashboad.jsx';
 import QrAttendance from './Admin/Pages/QrAttendance.jsx';
 import Inventory from "./Admin/Pages/Inventory";
 import Menu from "./Admin/Pages/Menu";
-import EditModal from './Admin/Pages/EditModal.jsx';
 import Alluser from "./Admin/Pages/Alluser.jsx"
-import Piecard from "./Admin/Pages/Piecard.jsx"
 import Dailyentry from './Admin/Pages/Dailyentry.jsx';
 import User from './User/User.jsx';
+import ProfileScanner from './User/Pages/ProfileScanner.jsx';
+import UserMenu from './User/Pages/UserMenu.jsx';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          
           <Route element={<PersistentLogin />}>
             <Route path="/" element={<Main />}>
               <Route path="" element={<Home />}></Route>
@@ -50,7 +49,10 @@ function App() {
             </Route>
           </Route>
           <Route element={<RequireAuth accessRole={0} />}>
-               <Route path="/user" element={<User/>}></Route>
+               <Route path="/user" element={<User/>}>
+                 <Route path="" element={<ProfileScanner/>}></Route>
+                 <Route path="usermenu" element={<UserMenu/>}></Route>
+               </Route>
           </Route>
           <Route path="/unauthorized" element={<Unauthorized />}> </Route>
         </Routes>
