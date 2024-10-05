@@ -10,17 +10,20 @@ import Aboutus from "./Components/Aboutus";
 import Unauthorized from "./Components/Unauthorized";
 
 import Admin from './Admin/Admin.jsx';
-
+import EditProfile from "./User/Pages/EditProfile.jsx";
 import Adduser from './Admin/Pages/Adduser.jsx';
 import Dashboad from './Admin/Pages/Dashboad.jsx';
 import QrAttendance from './Admin/Pages/QrAttendance.jsx';
 import Inventory from "./Admin/Pages/Inventory";
 import Menu from "./Admin/Pages/Menu";
-import EditModal from './Admin/Pages/EditModal.jsx';
+
 import Alluser from "./Admin/Pages/Alluser.jsx"
-import Piecard from "./Admin/Pages/Piecard.jsx"
+
 import Dailyentry from './Admin/Pages/Dailyentry.jsx';
 import User from './User/User.jsx';
+import Subscription from "./User/Pages/Subscription.jsx";
+import Info from "./User/Pages/Info.jsx";
+
 
 function App() {
   return (
@@ -50,7 +53,11 @@ function App() {
             </Route>
           </Route>
           <Route element={<RequireAuth accessRole={0} />}>
-               <Route path="/user" element={<User/>}></Route>
+               <Route path="/user" element={<User/>}>
+                  <Route path="editprofile" element={<EditProfile />}></Route>
+                  <Route path="subscription" element={<Subscription />}></Route>
+                  <Route path="information" element={<Info />}></Route>
+               </Route>
           </Route>
           <Route path="/unauthorized" element={<Unauthorized />}> </Route>
         </Routes>
