@@ -25,10 +25,6 @@ import UserMenu from "./User/Pages/UserMenu.jsx";
 import Subscription from "./User/Pages/Subscription.jsx";
 import Info from "./User/Pages/Info.jsx";
 import Attendance from './User/Pages/Attendance.jsx';
-import Piecard from './Employee/Pages/Piecard.jsx';
-
-import Employee from "./Employee/Employee.jsx";
-import MenuEmployee from "./Employee/Pages/MenuEmployee.jsx";
 
 
 function App() {
@@ -58,10 +54,7 @@ function App() {
               </Route>
             </Route>
             <Route element={<RequireAuth accessRole={2} />}>
-              <Route path="/employee" element={<Employee />}>
-                <Route path="" element={<Dashboad />}></Route>
-                <Route path="menuemp" element={<MenuEmployee />}></Route>
-              </Route>
+              
             </Route>
             <Route element={<RequireAuth accessRole={0} />}>
               <Route path="/user" element={<User />}>
@@ -69,6 +62,7 @@ function App() {
                 <Route path="editprofile" element={<EditProfile />}></Route>
                 <Route path="subscription" element={<Subscription />}></Route>
                 <Route path="usermenu" element={<UserMenu />}></Route>
+                <Route path="attendance" element={<Attendance/>}></Route>
                 <Route path="information" element={<Info />}></Route>
               </Route>
             </Route>
