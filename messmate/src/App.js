@@ -24,12 +24,15 @@ import ProfileScanner from './User/Pages/ProfileScanner.jsx';
 import UserMenu from './User/Pages/UserMenu.jsx';
 import Subscription from "./User/Pages/Subscription.jsx";
 import Info from "./User/Pages/Info.jsx";
+import Attendance from './User/Pages/Attendance.jsx';
+import Piecard from './Employee/Pages/Piecard.jsx';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="" element={<Piecard/>}></Route>
           <Route element={<PersistentLogin />}>
             <Route path="/" element={<Main />}>
               <Route path="" element={<Home />}></Route>
@@ -57,6 +60,7 @@ function App() {
                   <Route path="editprofile" element={<EditProfile />}></Route>
                   <Route path="subscription" element={<Subscription />}></Route>
                   <Route path="usermenu" element={<UserMenu/>}></Route>
+                  <Route path="attendance" element={<Attendance/>}></Route>
                   <Route path="information" element={<Info />}></Route>
                </Route>
           </Route>
